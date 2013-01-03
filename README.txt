@@ -21,6 +21,9 @@ Get a TrackOn XNAT account as following:
 3. fill the registration form with detailed information
 4. wait for the account to be enabled.
 
+git clone https://github.com/healthonrails/TrackOn.git
+cd TrackOn
+
 Then run program like this. 
 
 python download.py -u xnat_user_name -p password -f /output_folder_path/ -c /xnat_cache_path/
