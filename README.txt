@@ -23,9 +23,13 @@ Get a TrackOn XNAT account as following:
 
 Then run program like this. 
 
-python download.py -u xnat_user_name -p password -f '/output_folder_path/' -c '/xnat_cache_path'
+python download.py -u xnat_user_name -p password -f /output_folder_path/ -c /xnat_cache_path/
 e.g 
-python download.py -u tester -p secret -f '/scratch/DWI2012' -c '/scratch/xnat_cache/'
+python download.py -u tester -p secret -f /scratch/DWI2012/ -c /scratch/xnat_cache/
 
 This program will download 2280 files in the given file 2012DWIQCed_nrrd_to_fsl_list.txt
-to my local machine /scratch/DWI2012 folder.
+to my local machine /scratch/DWI2012/ folder. 
+
+Note the given path and folders like /scratch/DWI2012/ should be created if they does not 
+exist before run this program.
+XNAT cache path and folders will be created by xnat program too.

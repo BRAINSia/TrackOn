@@ -11,6 +11,7 @@ Created on Jan 3, 2013
 @email: chen-yang@uiowa.edu
 
 '''
+import os
 import argparse
 import getpass
 from XNAT import get_XNAT
@@ -47,7 +48,7 @@ def download_fsl_file(XNAT, fsl_dict,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description="This program is used to QCed fsl files from XNAT.")
+                                     description="This program is used to download QCed fsl files from XNAT.")
     parser.add_argument('-u', '--user', action='store', dest='username',
                         help='XNAT Account', required=True)
     parser.add_argument('-p', '--password', action='store', dest='password', default='missing',
@@ -57,6 +58,9 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--xnat_cache', action='store', dest='xnat_cache', default='/scratch/DWIConvert20120919/')
 
     args = parser.parse_args()
+
+    if not os.path.exists(args.output_folder):
+        os.makedirs(args.output_folder)
 
     if args.password == 'missing':
         args.password = getpass.getpass("Enter password for " + args.username + ": ")
