@@ -12,7 +12,10 @@ Install python 2.7 or 2.6
 easy_install pip
 
 sudo pip install --user httplib2
-sudo pip install --user pyxnat
+Install the latest pyxnat. 
+git clone https://github.com/pyxnat/pyxnat 
+cd pyxnat 
+pip install 
 sudo pip install --user pydicom
 
 Get a TrackOn XNAT account as following:
