@@ -12,6 +12,7 @@ Created on Jan 3, 2013
 
 '''
 import os
+import re
 import argparse
 import getpass
 from XNAT import get_XNAT
@@ -45,6 +46,23 @@ def download_fsl_file(XNAT, fsl_dict,
         session.resource(resource_folder).file(k).get(dest_folder + k)
 
 
+def verify_download(dest):
+    """
+    (string of path for the downloaded files) -> number
+
+    Check and return how many files have been downloaded in the given list.
+
+    >>>verify_download('/scratch/DWIConvert20120919/')
+    2280
+
+    """
+    count = 0
+    for f in os.listdir(dest):
+        print f
+        if re.search('.*(?:.nii.gz|.bval|.bvec)', f):
+            count += 1
+    return count
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -53,9 +71,11 @@ if __name__ == '__main__':
                         help='XNAT Account', required=True)
     parser.add_argument('-p', '--password', action='store', dest='password', default='missing',
                          help='password')
-    parser.add_argument('-f', '--output_folder', action='store', dest='output_folder', default='/scratch/DWIConvert20120919/',
+    parser.add_argument('-f', '--output_folder', action='store',
+                        dest='output_folder', default='/scratch/DWIConvert20120919/',
                          help='destination folder for downloaded files')
-    parser.add_argument('-c', '--xnat_cache', action='store', dest='xnat_cache', default='/scratch/DWIConvert20120919/')
+    parser.add_argument('-c', '--xnat_cache', action='store', dest='xnat_cache',
+                        default='/scratch/DWIConvert20120919/')
 
     args = parser.parse_args()
 
@@ -68,6 +88,12 @@ if __name__ == '__main__':
     XNAT = get_XNAT(username=args.username, password=args.password, xnat_cache=args.xnat_cache)
     fsl_dict = get_fsl_dict()
     download_fsl_file(XNAT, fsl_dict, dest_folder=args.output_folder)
+
+    print 'Checking downloads......'
+
+    # check how many files have been downloaded
+    num_downloaded = verify_download(args.output_folder)
+    print '{0} out of {1} files have been successfully downloaded!'.format(num_downloaded, len(fsl_dict))
     pass
 
 
