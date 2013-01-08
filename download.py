@@ -58,8 +58,8 @@ def verify_download(dest):
     """
     count = 0
     for f in os.listdir(dest):
-        print f
         if re.search('.*(?:.nii.gz|.bval|.bvec)', f):
+            print f
             count += 1
     return count
 
