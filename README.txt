@@ -18,6 +18,7 @@ cd pyxnat
 pip install 
 sudo pip install --user pydicom
 
+If you have already had a account, then you can skip the following get account steps. 
 Get a TrackOn XNAT account as following:
 1. go to https://xnat.hdni.org/xnat
 2. click Register
