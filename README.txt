@@ -30,12 +30,12 @@ cd TrackOn
 
 Then run program like this. 
 
-python download.py -u xnat_user_name -p password -f /output_folder_path/ -c /xnat_cache_path/
+python download_track_data.py -u xnat_user_name -p password -f /base_output_directory_path/ -c /xnat_cache_directory_path/ -l 2012DWI.csv
 e.g 
-python download.py -u tester -p secret -f /scratch/DWI2012/ -c /scratch/xnat_cache/
+python download_track_data.py -u tester -p secret -f /hjohnson/HDNI/20130214_TEST_DOWNLOAD/ -c /hjohnson/HDNI/20130214_TEST_DOWNLOAD/
 
 This program will download 2280 files in the given file 2012DWIQCed_nrrd_to_fsl_list.txt
-to my local machine /scratch/DWI2012/ folder. 
+to my local machine /hjohnson/HDNI/20130214_TEST_DOWNLOAD/ folder. 
 
 Note the given path and folders like /scratch/DWI2012/ should be created if they does not 
 exist before run this program.
