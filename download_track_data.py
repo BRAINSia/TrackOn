@@ -14,7 +14,7 @@ Created on Feb 13, 2013
 import os
 import argparse
 import getpass
-import time
+
 from XNAT import get_XNAT
 
 def get_fsl_dict(fsl_file='2012DWI.csv'):
